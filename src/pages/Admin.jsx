@@ -238,6 +238,10 @@ function Admin() {
       if (!response.ok) {
         throw new Error('Neizdevās dzēst pieteikumu.')
       }
+      const data = await response.json()
+      if (!data?.success) {
+        throw new Error('Pieteikums netika dzēsts.')
+      }
       await loadApplications()
       setMessage({ type: 'success', text: 'Pieteikums dzēsts.' })
     } catch (error) {

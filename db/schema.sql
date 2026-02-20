@@ -1,5 +1,14 @@
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
 
+-- Stores system users with roles and authentication timestamps.
+-- Saglaba sistemas lietotajus ar lomam un autentifikacijas laikiem.
+-- id: Unikals lietotaja identifikators (primara atslega).
+-- username: Unikals lietotajvards pieslegsanas procesam.
+-- password_hash: Sifrets lietotaja paroles hash.
+-- role: Lietotaja piekluves loma sistema.
+-- created_at: Lietotaja ieraksta izveides laiks.
+-- last_login_at: Pedejas veiksmigas pieslegsanas laiks.
+-- last_logout_at: Pedejas izrakstisanas laiks.
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   username TEXT NOT NULL UNIQUE,
@@ -10,12 +19,24 @@ CREATE TABLE IF NOT EXISTS users (
   last_logout_at TIMESTAMPTZ
 );
 
+-- Stores available service categories for applications.
+-- Saglaba pieejamas pakalpojumu kategorijas pieteikumiem.
+-- id: Unikals kategorijas identifikators (primara atslega).
+-- name: Unikals kategorijas nosaukums.
+-- created_at: Kategorijas izveides laiks.
 CREATE TABLE IF NOT EXISTS categories (
   id SERIAL PRIMARY KEY,
   name TEXT NOT NULL UNIQUE,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
+-- Stores active login sessions and their expiration times.
+-- Saglaba aktivas pieslegsanas sesijas un to deriguma terminus.
+-- id: Unikals sesijas ieraksta identifikators (primara atslega).
+-- user_id: Atsauce uz lietotaju, kuram pieder sesija.
+-- session_token: Unikals sesijas tokens autentifikacijai.
+-- created_at: Sesijas izveides laiks.
+-- expires_at: Sesijas deriguma termina beigas.
 CREATE TABLE IF NOT EXISTS sessions (
   id SERIAL PRIMARY KEY,
   user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
@@ -24,6 +45,20 @@ CREATE TABLE IF NOT EXISTS sessions (
   expires_at TIMESTAMPTZ NOT NULL
 );
 
+-- Stores submitted client applications for repair work.
+-- Saglaba klientu iesniegtos remonta darbu pieteikumus.
+-- id: Unikals pieteikuma identifikators (primara atslega).
+-- client_name: Klienta pilnais vards.
+-- phone: Klienta talrunis sazinai.
+-- email: Klienta epasta adrese.
+-- address: Objekta vai darba izpildes adrese.
+-- category: Izveleta pakalpojuma kategorija.
+-- budget: Klienta noraditais budzets.
+-- desired_date: Velamais darbu izpildes datums.
+-- status: Pieteikuma statuss (piem., pending, confirmed).
+-- created_at: Pieteikuma izveides laiks.
+-- updated_at: Pedejo izmainu laiks.
+-- confirmed_at: Pieteikuma apstiprinasanas laiks.
 CREATE TABLE IF NOT EXISTS applications (
   id SERIAL PRIMARY KEY,
   client_name TEXT NOT NULL,

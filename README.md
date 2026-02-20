@@ -77,3 +77,44 @@ DB shēmas uzlikšana:
 ```bash
 psql "$DATABASE_URL" -f /Users/demidxvs/Documents/remontdarbi/remont-darbi/db/schema.sql
 ```
+
+
+
+
+
+-- Проверить, к какой БД подключен
+SELECT current_database(), current_user;
+
+-- Показать пользователей
+SELECT id, username, role, created_at FROM users ORDER BY id;
+
+-- Показать заявки
+SELECT id, client_name, status, created_at FROM applications ORDER BY id DESC;
+
+-- Проверить конкретную заявку
+SELECT * FROM applications WHERE id = 123;
+
+-- Удалить конкретную заявку вручную (если нужно)
+DELETE FROM applications WHERE id = 123;
+
+-- Сбросить пароль admin (пример)
+UPDATE users
+SET password_hash = crypt('NewStrongPass123!', gen_salt('bf'))
+WHERE username = 'admin';
+
+
+SELECT create_user('newuser', 'StrongPass123!', 'viewer');
+-- роли: 'admin' | 'manager' | 'viewer'
+
+
+
+SELECT id, username, role FROM users ORDER BY id;
+
+
+
+
+SELECT delete_user(5);
+
+
+
+SELECT delete_user(id) FROM users WHERE username = 'newuser';

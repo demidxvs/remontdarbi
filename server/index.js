@@ -348,7 +348,11 @@ app.post('/api/admin/applications/:id/delete', async (req, res) => {
       sessionToken,
       req.params.id,
     ])
-    res.json({ success: result.rows[0]?.ok === true })
+    const ok = result.rows[0]?.ok === true
+    if (!ok) {
+      return res.status(404).json({ error: 'Application not found.' })
+    }
+    res.json({ success: true })
   } catch (error) {
     res.status(500).json({ error: 'Failed to delete application.' })
   }
