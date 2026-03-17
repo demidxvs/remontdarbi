@@ -7,19 +7,8 @@ Pēdējo izmaiņu datums: 2026. gada 17. marts
 Mērķauditorija: Klienti, administratori un sistēmas lietotāji
 Projekta mērķis: Nodrošināt remontdarbu pieteikumu iesniegšanu un pārvaldību tīmekļa vidē
 Atsauksme uz resursiem: Izmantoti mācību materiāli, Vite, React, Tailwind CSS, Express un PostgreSQL dokumentācija
-Faila apraksts: Frontenda ieejas punkts lietotnes inicializācijai
+Faila apraksts: Vercel serverless ievades punkts backend API
 */
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom'
-import './index.css'
-import App from './App.jsx'
+import app from '../server/index.js'
 
-// Inicialize React un piesledz marsrutetaju.
-createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </StrictMode>,
-)
+export default app

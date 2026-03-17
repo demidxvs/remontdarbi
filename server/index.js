@@ -1,5 +1,17 @@
+/*
+Projekta nosaukums: Remontdarbi
+Autors: Artjoms Demidovs
+Versija: 1.0
+Izveides datums: 2026. gada 7. janvāris
+Pēdējo izmaiņu datums: 2026. gada 17. marts
+Mērķauditorija: Klienti, administratori un sistēmas lietotāji
+Projekta mērķis: Nodrošināt remontdarbu pieteikumu iesniegšanu un pārvaldību tīmekļa vidē
+Atsauksme uz resursiem: Izmantoti mācību materiāli, Vite, React, Tailwind CSS, Express un PostgreSQL dokumentācija
+Faila apraksts: Express servera galvenais fails ar API maršrutiem
+*/
 import express from 'express'
 import cors from 'cors'
+import { fileURLToPath } from 'url'
 import { query } from './db.js'
 
 const app = express()
@@ -495,7 +507,13 @@ app.post('/api/admin/logout', async (req, res) => {
   }
 })
 
+const isDirectRun = process.argv[1] === fileURLToPath(import.meta.url)
+
 // HTTP servera palaisana.
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+if (isDirectRun) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`)
+  })
+}
+
+export default app

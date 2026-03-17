@@ -1,3 +1,14 @@
+<!--
+Projekta nosaukums: Remontdarbi
+Autors: Artjoms Demidovs
+Versija: 1.0
+Izveides datums: 2026. gada 7. janvāris
+Pēdējo izmaiņu datums: 2026. gada 17. marts
+Mērķauditorija: Klienti, administratori un sistēmas lietotāji
+Projekta mērķis: Nodrošināt remontdarbu pieteikumu iesniegšanu un pārvaldību tīmekļa vidē
+Atsauksme uz resursiem: Izmantoti mācību materiāli, Vite, React, Tailwind CSS, Express un PostgreSQL dokumentācija
+Faila apraksts: Projekta dokumentācija ar aprakstu, struktūru un palaišanas instrukcijām
+-->
 # Remontdarbi
 
 Tīmekļa lietotne remontdarbu pieteikumu saņemšanai un pārvaldībai. Ir publiskā sadaļa ar apstiprināto pieteikumu sarakstu un administrācijas sadaļa pieteikumu, kategoriju un lietotāju pārvaldībai. Atbalstīta pieslēgšanās un viesu režīms (viesis var skatīt paziņojumus, bet nevar izveidot pieteikumus).
@@ -77,6 +88,29 @@ DB shēmas uzlikšana:
 ```bash
 psql "$DATABASE_URL" -f /Users/demidxvs/Documents/remontdarbi/remont-darbi/db/schema.sql
 ```
+
+## Noklusējuma pieslēgšanās dati
+
+Pēc noklusējuma testēšanai var izmantot šādus administratora piekļuves datus:
+
+- Login: `admin`
+- Password: `123456`
+
+## Izmantotie resursi un mācību platformas
+
+Projekta izstrādes laikā tika izmantota oficiālā dokumentācija un mācību materiāli, lai labāk izprastu izmantotās tehnoloģijas un atrastu piemērotus risinājumus.
+
+- Vite dokumentācija: https://vite.dev/
+- Vite konfigurācija: https://vite.dev/config/
+- React dokumentācija: https://react.dev/
+- Tailwind CSS dokumentācija: https://tailwindcss.com/docs/installation
+- Express maršrutēšanas dokumentācija: https://expressjs.com/en/guide/routing.html
+- node-postgres dokumentācija: https://node-postgres.com/
+- PostgreSQL funkciju dokumentācija: https://www.postgresql.org/docs/current/sql-createfunction.html
+- MDN Web Docs (Fetch API un vispārējā tīmekļa izstrāde): https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+- freeCodeCamp mācību materiāli par React, Express un PostgreSQL: https://www.freecodecamp.org/news/
+- W3Schools mācību materiāli par SQL, HTML, CSS un JavaScript: https://www.w3schools.com/
+- GeeksforGeeks mācību materiāli par Express.js un full-stack izstrādi: https://www.geeksforgeeks.org/
 
 
 

@@ -1,3 +1,14 @@
+/*
+Projekta nosaukums: Remontdarbi
+Autors: Artjoms Demidovs
+Versija: 1.0
+Izveides datums: 2026. gada 7. janvāris
+Pēdējo izmaiņu datums: 2026. gada 17. marts
+Mērķauditorija: Klienti, administratori un sistēmas lietotāji
+Projekta mērķis: Nodrošināt remontdarbu pieteikumu iesniegšanu un pārvaldību tīmekļa vidē
+Atsauksme uz resursiem: Izmantoti mācību materiāli, Vite, React, Tailwind CSS, Express un PostgreSQL dokumentācija
+Faila apraksts: Galvenais React komponents ar maršrutēšanu un navigāciju
+*/
 import { useEffect, useMemo, useState } from 'react'
 import { NavLink, Navigate, Route, Routes } from 'react-router-dom'
 import Admin from './pages/Admin.jsx'
